@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+   body{
+	text-align: center
+	}
+   #header{
+     background-color: beige;
+     height:100px;
+   }
+   #kolonaKontejner{
+    border: 1px solid red;
+    background-color: aquamarine;
+    height:300px;
+   }
+  
+   #kolonaSadrzaj1{
+    background-color: bisque;
+    height:300px;
+    width: calc(100%/3 - 40px/3);
+    margin-right: 20px;
+    float:left;
+    display:block;
+   }
+
+   #kolonaSadrzaj2{
+    background-color: aqua;
+    height:300px;
+    width: calc(100%/3 - 40px/3);
+    float:left;
+    display:block;
+   }
+
+  #kolonaSadrzaj3{
+    background-color: bisque;
+    height:300px;
+    width: calc(100%/3 - 40px/3);
+    margin-left: 20px;
+    float:left;
+    display:block;
+   }
+   #footer{
+    background-color: blue;
+    border: 10px solid gray;
+    height: 200px;
+   }
+
+</style>
+<body>
+  <div id="header">
+	HEADER
+  </div>
+  <div id="kolonaKontejner">
+      <div id="kolonaSadrzaj1">KOLONA 1</div>
+      <div id="kolonaSadrzaj2">KOLONA 2</div>
+      <div id="kolonaSadrzaj3">KOLONA 3</div>
+  </div>
+  <div id="footer">FOOTER</div>
+</body>
+</html>

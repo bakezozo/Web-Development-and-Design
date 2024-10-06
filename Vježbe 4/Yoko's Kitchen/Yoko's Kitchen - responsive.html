@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Yoko's Kitchen</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			background-image: url("images/dark-wood.jpg");
+		}
+
+		header {
+			background-image: url("images/header.jpg");
+			height: 160px;
+		}
+
+		.courses {
+			width: 70%;
+			float: left;
+			box-sizing: border-box;
+		}
+
+		aside {
+			width: 30%;
+			float: left;
+			padding: 5px;
+			box-sizing: border-box;
+		}
+
+		figure{
+			padding:5px;
+			border:1px solid grey;
+		}
+
+		footer {
+			clear: left;
+			background-color: white;
+		}
+
+		.wrapper {
+			background-color: white;
+			width: 940px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		li {
+			display: inline;
+			margin-left: 10px;
+		}
+
+		ul {
+			position: relative;
+			top: 150px;
+			background-color: gray;
+			padding: 5px;
+			box-sizing: border-box;
+		}
+
+		li a {
+			text-decoration: none;
+			color: white;
+		}
+
+		.current {
+			color: black;
+		}
+
+		.images-popular-recipes a {
+			display: block;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			border-top: 1px solid gray;
+			color: black;
+		}
+
+		.images-popular-recipes a:hover {
+			background-color: gainsboro;
+		}
+
+		figure {
+			float: left;
+		}
+
+		article {
+			clear: left;
+		}
+
+		@media only screen and (max-width: 768px) {
+			* {
+				box-sizing: border-box;
+			}
+			body{
+				margin:0;
+			}
+			nav{
+				height:auto;
+				padding-top: 120px;
+				overflow: hidden;
+			}
+
+			header{
+				height: auto;
+			}
+
+			ul{
+				top:0;
+				padding:0;
+				margin:0;
+			}
+
+			li {
+				display: block;
+				text-align: center;
+				padding: 10px;
+				border-top: 1px solid white;
+				margin:0;
+			}
+
+			.wrapper {
+				width: 100%;
+			}
+
+			.courses {
+				width: 100%;
+			}
+
+			aside {
+				width: 100%;
+			}
+
+			figure{
+				margin:0px;
+				width:100%;
+			}
+			figure img{
+				width: 100%;
+			}
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header>
+			<nav>
+				<ul>
+					<li><a href="" class="current">home</a></li>
+					<li><a href="">classes</a></li>
+					<li><a href="">catering</a></li>
+					<li><a href="">about</a></li>
+					<li><a href="">contact</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section class="courses">
+			<article>
+				<figure>
+					<img src="images/bok-choi.jpg" alt="Bok Choi" />
+					<figcaption>Bok Choi</figcaption>
+				</figure>
+				<hgroup>
+					<h2>Japanese Vegetarian</h2>
+					<h3>Five week course in London</h3>
+				</hgroup>
+				<p>A five week introduction to traditional Japanese vegetarian meals, teaching you a selection of rice
+					and noodle dishes.</p>
+			</article>
+			<article>
+				<figure>
+					<img src="images/teriyaki.jpg" alt="Teriyaki sauce" />
+					<figcaption>Teriyaki Sauce</figcaption>
+				</figure>
+				<hgroup>
+					<h2>Sauces Masterclass</h2>
+					<h3>One day workshop</h3>
+				</hgroup>
+				<p>An intensive one-day course looking at how to create the most delicious sauces for use in a range of
+					Japanese cookery.</p>
+			</article>
+		</section>
+		<aside>
+			<section class="images-popular-recipes">
+				<h2>Popular Recipes</h2>
+				<a href="">Yakitori (grilled chicken)</a>
+				<a href="">Tsukune (minced chicken patties)</a>
+				<a href="">Okonomiyaki (savory pancakes)</a>
+				<a href="">Mizutaki (chicken stew)</a>
+			</section>
+			<section class="contact-details">
+				<h2>Contact</h2>
+				<p>Yoko's Kitchen<br />
+					27 Redchurch Street<br />
+					Shoreditch<br />
+					London E2 7DP</p>
+			</section>
+		</aside>
+		<footer>
+			&copy; 2011 Yoko's Kitchen
+		</footer>
+	</div><!-- .wrapper -->
+</body>
+
+</html>
