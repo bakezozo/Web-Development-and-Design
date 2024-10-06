@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://wrd.app.fit.ba/2018-19/fit-messagebox.css"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="form-group">
+        <label>ID zaposlenika</label>
+        <input id="idzaposlenika-input"  type="number"  />
+    </div>
+
+    <div class="form-group">
+        <label>Trenutna slika studenta</label>
+        <img id="preview-slika" style="height: 200px; display: block; border: 1px solid red;" />
+    </div>
+
+    <div class="form-group">
+        <label>Odabei novu sliku</label>
+        <input id="fajl-input" accept="image/*" type="file" onchange="generisi_preview()" />
+        <button onclick="upload_slika()">Upload</button>
+    </div>
+</body>
+<script src="https://wrd.app.fit.ba/2018-19/fit-messagebox.js"></script>
+<script>
+
+    function generisi_preview() {
+        var file = document.getElementById("fajl-input").files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function () {
+                document.getElementById("preview-slika").setAttribute("src", reader.result);
+            }
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function upload_slika() {
+        var idzaposlenika =  document.getElementById("idzaposlenika-input").value;
+        var file = document.getElementById("fajl-input").files[0];
+
+        if (file) {
+            var data = new FormData()
+            data.append('profile_image', file)
+
+            fetch("https://restapiexample.wrd.app.fit.ba/Employee/AddProfileImage/" + idzaposlenika, {
+                method: 'POST',
+                body: data
+            })
+            .then(response => response.json())
+            .then(data => {
+                porukaSuccess("dodavanje uspješno " + data)
+                console.log('Success:', data);
+                document.getElementById("fajl-input").value = "";
+                document.getElementById("preview-slika").setAttribute("src", "");
+            })
+            .catch((error) => {
+                porukaError("greska  " + error)
+                console.error('Error:', error);
+            });
+        }
+    }
+</script>
+
+</html>

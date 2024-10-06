@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    tr,
+    td,
+    th {
+        border: 1px solid black;
+    }
+
+    .slika-profila {
+        width: 30px;
+    }
+
+    div label {
+        display: block;
+    }
+</style>
+<link rel="stylesheet" href="https://wrd.app.fit.ba/2018-19/fit-messagebox.css" />
+
+<body>
+    <h1>5.5 FIT WRD Upravljanje studentima API</h1>
+    <div style="border: 1px solid red; padding: 5px;"">
+        <label style="font-weight: bolder;">Informacije o označenom studentu</label><br>
+        <label>ID</label> <input id="txtID" disabled />
+        <label>Ime</label> <input id="txtIme" />
+        <label>Prezime</label> <input id="txtPrezime" />
+        <label>Broj indeksa</label> <input id="txtBrojIndeksa" />
+        <label>Datum rođenja</label> <input id="txtDatumRodjenja" /><br>
+        <label>Opstina rodjenja ID</label> <input id="txtOpstinaRodjenjaID" /><br>
+        <button onclick="btnZadD_dodaj()">Zadatak D (novi-snimi)</button> <br>
+        <button onclick="btnZadE_uredi()">Zadatak E (update-snimi)</button><br>
+    </div>
+    <br>
+    <br>
+
+      <div style="border: 1px solid red; padding: 5px;"">
+        <label style="font-weight: bolder;">Slika studenta</label><br>
+        <label>ID </label> <input id="txtID2" disabled />
+            <label>Trenutna slika studenta</label>
+            <img id="preview-slika" style="height: 200px; display: block; border: 1px solid blue;" />
+    
+            <label>Odaberi novu sliku</label>
+            <input id="fajl-input" accept="image/*" type="file" /><br>
+            <button onclick="btnZadH_upload()">Zadatak H (upload)</button> max 300 KB 
+    </div>
+    <br>
+    <br>
+    <input id='txtTrazi' type="text" />
+    <button onclick="btnZadA_trazi()">Zadatak A i B (trazi)</button>
+<br>
+<br>
+   
+  
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Broj indeksa</th>
+            <th>Drzava rođenja</th>
+            <th>Opstina rođenja</th>
+            <th>Datum dodavanja</th>
+            <th>Profilna slika</th>
+            <th>Akcija</th>
+        </tr>
+        <tbody id="tabela-zaposlenici">
+
+        </tbody>
+    </table>
+   
+   
+</body>
+<script src="https://wrd.app.fit.ba/2018-19/fit-messagebox.js"></script>
+<script>
+
+function btnZadA_trazi() {
+    
+}
+
+function btnZadC_getById(id) {
+    
+}
+
+function btnZadD_dodaj() {
+   
+}
+
+function btnZadE_uredi() {       
+  
+}
+
+function btnZadF_obrisi(id) {        
+    
+}
+
+function btnZadG_paging(page_number) {
+   
+}
+
+function btnZadH_upload() {
+   
+}
+</script>
+
+</html>

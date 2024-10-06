@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://wrd.app.fit.ba/2018-19/fit-messagebox.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+            border: 1px solid red;
+            margin: 5px;
+            padding: 5px;
+        }
+        label,
+        select,
+        input {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <button onclick="preuzmi_drzave()">Preuzmi drzave</button>
+        <button onclick="ocisti_drzave()">Ocisti drzave</button>
+        <button onclick="info_drzave()">Info drzave</button>
+        <label>Drzava</label>
+        <select id="drzava">
+            <option>(Odaberite drzavu)</option>
+        </select>
+    </section>
+
+
+</body>
+<script src="https://wrd.app.fit.ba/2018-19/fit-messagebox.js"></script>
+<script>
+
+    function ocisti_drzave() {
+        document.getElementById("drzava").innerHTML = "";
+    }
+    
+    function info_drzave() {
+       var drzava_id = document.getElementById("drzava").value;
+       porukaWarning("drzava_id: " + drzava_id);
+    }
+
+    function preuzmi_drzave() {
+        var url = "https://restapiexample.wrd.app.fit.ba/Drzava/GetAll";
+
+        fetch(url)
+            .then((r) => {
+                if (r.status != 200) {
+                    porukaError("greska  " + r.status)
+                    return;
+                }
+
+                r.json().then((x) => {
+                    for (const z of x) {
+                        var novi_red = `<option value="${z.id}">${z.opis}</option>`;
+                        document.getElementById("drzava").innerHTML += novi_red;
+                    }
+                });
+
+            })
+            .catch((error) => {
+                porukaError("greska  " + error)
+            });
+    }
+
+    
+
+
+</script>
+
+</html>

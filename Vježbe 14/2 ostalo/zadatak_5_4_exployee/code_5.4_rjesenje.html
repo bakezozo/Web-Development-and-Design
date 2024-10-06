@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    tr,
+    td,
+    th {
+        border: 1px solid black;
+    }
+
+    .slika-profila {
+        width: 30px;
+    }
+
+
+    div label {
+        display: block;
+    }
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://wrd.app.fit.ba/2018-19/fit-messagebox.css" />
+
+<body>
+    <h1>5.4 FIT WRD Employee API</h1>
+    <div style="border: 1px solid red; padding: 5px;">
+        <label>ID</label> <input id="txtID" disabled />
+        <label>Ime</label> <input id="txtIme" />
+        <label>Plata</label> <input id="txtPlata" />
+        <label>Starost</label> <input id="txtStarost" /><br>
+        <button onclick="btnZadD_dodaj()" class="btn btn-warning">Zadatak D (novi-snimi)</button> <br>
+        <button onclick="btnZadE_uredi()">Zadatak E (update-snimi)</button><br>
+    </div>
+    <br>
+    <br>
+
+    <div style="border: 1px solid red;  padding: 5px;"">
+        <label>ID</label> <input id="txtID2" disabled />
+    <label>Trenutna slika studenta</label>
+    <img id="preview-slika" style="height: 200px; display: block; border: 1px solid blue;" />
+
+    <label>Odaberi novu sliku</label>
+    <input id="fajl-input" accept="image/*" type="file" onchange="pripremi_preview()" /><br>
+    <button onclick="btnZadH_upload()">Zadatak H (upload)</button> max 300 KB
+    </div>
+    <br>
+    <br>
+    <input id='txtTrazi' type="text" />
+    <button onclick="btnZadA_trazi()">Zadatak A i B (trazi)</button>
+    <br>
+    <br>
+
+    <div style="border: 1px solid red;  padding: 5px;"">
+        Items per page <select id=" items_per_page">
+        <option selected>5</option>
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+        </select>
+        <button onclick="btnZadG_paging(1)">Zadatak G (paged)</button><br>
+        <div id="pagesDiv">
+
+        </div>
+        Current page <span id="current_page"></span><br>
+        Total items <span id="total_items"></span>
+    </div>
+
+    <table  class="table table-sm">
+        <tr>
+            <th>ID</th>
+            <th>Ime</th>
+            <th>Starost</th>
+            <th>Plata</th>
+            <th>Vrijeme dodavanja</th>
+            <th>Broj zadataka</th>
+            <th>Profilna slika</th>
+            <th>Akcija</th>
+        </tr>
+        <tbody id="tabela-zaposlenici">
+
+        </tbody>
+    </table>
+
+
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://wrd.app.fit.ba/2018-19/fit-messagebox.js"></script>
+<script>
+
+    function pripremi_img(src) {
+        return "<img src='" + src + "' class='slika-profila' />";
+    }
+
+    function pripremi_page_dugme(br) {
+        return "<button onclick='btnZadG_paging(" + br + ")'>" + br + "</button>";
+    }
+    function pripremi_preview() {
+        var file = document.getElementById("fajl-input").files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function () {
+                document.getElementById("preview-slika").setAttribute("src", reader.result);
+            }
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+
+
+    function btnZadD_dodaj() {
+        var z = new Object();
+        z.employee_name = document.getElementById("txtIme").value;
+        z.employee_salary = parseInt(document.getElementById("txtPlata").value);
+        z.employee_age = parseInt(document.getElementById("txtStarost").value);
+        var strJson = JSON.stringify(z);
+
+        fetch('https://restapiexample.wrd.app.fit.ba/employee/add', {
+            method: 'POST', //u dokumentaciji API-a (u swaggeru) piše da je metoda tipa POST
+            headers: {
+                'Content-Type': 'application/json', // u dokumentaciji API-a piše da je metoda prima JSON
+            },
+            body: strJson,
+        })
+            .then(r => {
+                if (r.status != 200) {
+                    alert("Server javlja gresku: " + r.status);
+                    return;
+                }
+
+                r.json().then(x => {
+                    porukaSuccess("dodavanje uspješno " + x.employee_name)
+                    console.log('Success:', x);
+                    document.getElementById("txtIme").value = "";
+                    document.getElementById("txtPlata").value = "";
+                    document.getElementById("txtStarost").value = "";
+                });
+
+            })// u dokumentaciji API-a piše da je metoda vrać JSON
+            .catch((error) => {
+                porukaError("greska  " + error)
+                console.error('Error:', error);
+            });
+
+    }
+
+    function btnZadE_uredi() {
+        var z = new Object();
+        z.employee_name = document.getElementById("txtIme").value;
+        z.employee_salary = parseInt(document.getElementById("txtPlata").value);
+        z.employee_age = parseInt(document.getElementById("txtStarost").value);
+        var strJson = JSON.stringify(z);
+
+
+        var id = document.getElementById("txtID").value;
+
+        fetch('https://restapiexample.wrd.app.fit.ba/employee/update/' + id, {
+            method: 'POST', //u dokumentaciji API-a (u swaggeru) piše da je metoda tipa POST
+            headers: {
+                'Content-Type': 'application/json', // u dokumentaciji API-a piše da je metoda prima JSON
+            },
+            body: strJson,
+        })
+            .then(response => response.json())// u dokumentaciji API-a piše da je metoda vrać JSON
+            .then(data => {
+                porukaSuccess("dodavanje uspješno " + data.employee_name)
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                porukaError("greska  " + error)
+                console.error('Error:', error);
+            });
+
+    }
+
+    function btnZadC_getById(id) {
+
+        var url = "https://restapiexample.wrd.app.fit.ba/Employee/Get/" + id;
+
+        fetch(url)
+            .then((r) => {
+                if (r.status != 200) {
+                    alert("Server javlja gresku: " + r.status);
+                    return;
+                }
+
+                r.json().then((x) => {
+                    document.getElementById("txtID").value = x.id;
+                    document.getElementById("txtID2").value = x.id;
+                    document.getElementById("txtIme").value = x.employee_name;
+                    document.getElementById("txtPlata").value = x.employee_salary;
+                    document.getElementById("txtStarost").value = x.employee_age;
+                    document.getElementById("preview-slika").setAttribute("src", x.profile_image);
+                });
+            })
+            .catch((error) => {
+                porukaError("greska  " + error)
+                console.error('Error:', error);
+            });
+    }
+
+    function btnZadF_obrisi(id) {
+        document.getElementById("red-" + id).remove();
+        fetch('https://restapiexample.wrd.app.fit.ba/employee/delete/' + id, {
+            method: 'POST', //u dokumentaciji API-a (u swaggeru) piše da je metoda tipa POST
+        })
+            .then(r => r.json().then(data => {
+                porukaSuccess("brisanje uspješno " + data.employee_name)
+                console.log('Success:', data);
+            }))            
+            .catch((error) => {
+                porukaError("greska  " + error)
+                console.error('Error:', error);
+            });
+
+    }
+
+    function btnZadA_trazi() {
+        var ime = document.getElementById("txtTrazi").value;
+        var url = "https://restapiexample.wrd.app.fit.ba/Employee/GetAll?name=" + ime;
+
+        fetch(url)
+            .then((r) => {
+                if (r.status != 200) {
+                    alert("Server javlja gresku: " + r.status);
+                    return;
+                }
+
+                r.json().then((x) => {
+                    document.getElementById("tabela-zaposlenici").innerHTML = "";
+
+                    for (const z of x) {
+                        var id = z.id;
+                        var ime = z.employee_name.replace("<", "");
+                        var starost = z.employee_age;
+                        var plata = z.employee_salary;
+                        var vrijeme_dodavanja_zapisa = z.created_time;
+                        var broj_zadataka = z.task_count;
+                        var profilna_slika = z.profile_image;
+
+                        var novi_red = "<tr id='red-" + id + "'>"
+
+                            + "<td> " + id + "</td>"
+                            + "<td> " + ime + "</td>"
+                            + "<td> " + starost + "</td>"
+                            + "<td> " + plata + "</td>"
+                            + "<td> " + new Date(vrijeme_dodavanja_zapisa).toLocaleDateString("en-US") + "</td>"
+                            + "<td> " + broj_zadataka + "</td>"
+                            + "<td> " + pripremi_img(profilna_slika) + "</td>"
+                            + "<td> <button onclick='btnZadC_getById(" + id + ")'>Zadatak C (get-by-id) </button>"
+                            + "<button onclick='btnZadF_obrisi(" + id + ")'>Zadatak F (obrisi) </button>"
+                            + "</tr>";
+
+                        document.getElementById("tabela-zaposlenici").innerHTML += novi_red;
+                    }
+                });
+
+            })
+            .catch((error) => {
+                porukaError("greska  " + error)
+                console.error('Error:', error);
+            });
+    }
+
+    function btnZadG_paging(page_number) {
+        var ime = document.getElementById("txtTrazi").value;
+        var items_per_page = document.getElementById("items_per_page").value;
+
+        var url = "https://restapiexample.wrd.app.fit.ba/Employee/GetAllPaged?name=" + ime + "&items_per_page=" + items_per_page + "&page_number=" + page_number;
+
+        fetch(url)
+            .then((r) => {
+                if (r.status != 200) {
+                    alert("Server javlja gresku: " + r.status);
+                    return;
+                }
+
+                r.json().then((x) => {
+                    document.getElementById("tabela-zaposlenici").innerHTML = "";
+                    document.getElementById("pagesDiv").innerHTML = "";
+
+                    for (let i = 0; i < x.totalPages; i++) {
+                        document.getElementById("pagesDiv").innerHTML += pripremi_page_dugme(i + 1);
+                    }
+                    document.getElementById("total_items").innerText = x.totalCount;
+                    document.getElementById("current_page").innerText = x.currentPage;
+
+                    for (const z of x.dataItems) {
+                        var id = z.id;
+                        var ime = z.employee_name.replace("<", "");
+                        var starost = z.employee_age;
+                        var plata = z.employee_salary;
+                        var vrijeme_dodavanja_zapisa = z.created_time;
+                        var broj_zadataka = z.task_count;
+                        var profilna_slika = z.profile_image;
+
+                        var novi_red = "<tr id='red-" + id + "'>"
+
+                            + "<td> " + id + "</td>"
+                            + "<td> " + ime + "</td>"
+                            + "<td> " + starost + "</td>"
+                            + "<td> " + plata + "</td>"
+                            + "<td> " + new Date(vrijeme_dodavanja_zapisa).toLocaleDateString("en-US") + "</td>"
+                            + "<td> " + broj_zadataka + "</td>"
+                            + "<td> " + pripremi_img(profilna_slika) + "</td>"
+                            + "<td> <button onclick='btnZadC_getById(" + id + ")'>Zadatak B (get-by-id) </button>"
+                            + "<button onclick='btnZadF_obrisi(" + id + ")'>Zadatak F (obrisi) </button>"
+                            + "</tr>";
+
+                        document.getElementById("tabela-zaposlenici").innerHTML += novi_red;
+                    }
+                });
+
+            })
+            .catch((error) => {
+                porukaError("greska  " + error)
+                console.error('Error:', error);
+            });
+    }
+
+
+    function btnZadH_upload() {
+        var idzaposlenika = document.getElementById("txtID").value;
+        var file = document.getElementById("fajl-input").files[0];
+
+        if (file && idzaposlenika) {
+            var data = new FormData()
+            data.append('profile_image', file)
+
+            fetch("https://restapiexample.wrd.app.fit.ba/Employee/AddProfileImage/" + idzaposlenika, {
+                method: 'POST',
+                body: data
+            })
+                .then(response => response.json())
+                .then(data => {
+                    porukaSuccess("dodavanje uspješno " + data)
+                    console.log('Success:', data);
+                    document.getElementById("fajl-input").value = "";
+                    document.getElementById("preview-slika").setAttribute("src", "");
+                })
+                .catch((error) => {
+                    porukaError("greska  " + error)
+                    console.error('Error:', error);
+                });
+        }
+        else {
+            porukaWarning("Označite zaposlenika i odaberite sliku")
+        }
+    }
+
+
+</script>
+
+</html>

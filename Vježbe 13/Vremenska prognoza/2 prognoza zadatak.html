@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grupa label {
+            display: block;
+        }
+
+        .gradovi div {
+            background-color: gainsboro;
+            border: 1px solid;
+            padding: 5px;
+            width: 200px;
+            cursor: pointer;
+        }
+
+        .gradovi div:hover {
+            background-color: gray;
+        }
+
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid black
+        }
+
+        .strelica {
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grupa">
+        <label>grad </label>
+        <input id="gradText" value="Dubrovnik">
+    </div>
+
+    <button onclick="btnClick()">Preuzmi</button>
+
+    <div id="poruka"></div>
+
+    <table id="tabela">
+        <tr>
+            <th>Vrijeme</th>
+            <th>Temp stepeni C</th>
+            <th>Opis</th>
+            <th>Vlaznost zraka%</th>
+            <th>Wind speed m/s</th>
+            <th>Wind smjer</th>
+            <th>Pritisak hPa</th>
+        </tr>
+
+    </table>
+
+    <div class="gradovi">
+        <div>Mostar</div>
+        <div>Sarajevo</div>
+        <div>Tuzla</div>
+        <div>Dubrovnik</div>
+        <div>Sakha</div>
+        <div>Mecca</div>
+        <div>Wiesbaden</div>
+    </div>
+
+
+</body>
+
+<script>
+    function btnClick() {
+        let gradText = document.getElementById("gradText").value;
+
+        let url = `http://api.openweathermap.org/data/2.5/forecast?q=${gradText}&appid=917b026a997320574cd4315b9bf4c73a   `;
+
+        fetch(url)
+            .then(r => {
+                if (r.status !== 200) {
+                    alert("neka greska: " + r.status);
+                    return;
+                }
+
+                r.json().then(t => {
+                    document.getElementById("poruka").innerHTML = ``;
+
+                    for (let x of t.list) {
+                        tabela.innerHTML += `
+                        <tr> 
+                          <td>${x.dt_txt}</td>  
+                          <td>${(x.main.temp - 273).toFixed(1)} </td>
+                          <td>${x.weather[0].description}</td>
+                          <td>${x.main.humidity}</td>
+                          <td>${x.wind.speed}</td>
+                          <td>${x.wind.deg}
+                            <img class='strelica' src='strelica.svg' style='rotate:${x.wind.deg - 90}deg' >
+                          </td>
+                          <td>${x.main.pressure}</td>
+                        </tr>`
+                    }
+                })
+            })
+            .catch(e => {
+                alert("greska u komunikaciji sa server: " + e);
+            })
+    }
+
+    document.querySelectorAll(".gradovi div").forEach(f => {
+        f.onclick = () => {
+            document.getElementById("gradText").value = f.innerHTML;
+            btnClick();
+        }
+    })
+
+
+
+
+</script>
+
+</html>

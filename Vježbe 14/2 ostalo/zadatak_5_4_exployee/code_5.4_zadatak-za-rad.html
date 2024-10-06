@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    tr,
+    td,
+    th {
+        border: 1px solid black;
+    }
+
+    .slika-profila {
+        width: 30px;
+    }
+
+
+    div label {
+        display: block;
+    }
+</style>
+<link rel="stylesheet" href="https://wrd.app.fit.ba/2018-19/fit-messagebox.css" />
+
+<body>
+    <h1>5.4 FIT WRD Employee API</h1>
+    <div style="border: 1px solid red; padding: 5px;">
+        <label>ID</label> <input id="txtID" disabled />
+        <label>Ime</label> <input id="txtIme" />
+        <label>Plata</label> <input id="txtPlata" />
+        <label>Starost</label> <input id="txtStarost" /><br>
+        <button onclick="btnZadD_dodaj()">Zadatak D (novi-snimi)</button> <br>
+        <button onclick="btnZadE_uredi()">Zadatak E (update-snimi)</button><br>
+    </div>
+    <br>
+    <br>
+
+    <div style="border: 1px solid red;  padding: 5px;"">
+        <label>ID</label> <input id="txtID2" disabled />
+    <label>Trenutna slika studenta</label>
+    <img id="preview-slika" style="height: 200px; display: block; border: 1px solid blue;" />
+
+    <label>Odaberi novu sliku</label>
+    <input id="fajl-input" accept="image/*" type="file" onchange="pripremi_preview()" /><br>
+    <button onclick="btnZadH_upload()">Zadatak H (upload)</button> max 300 KB
+    </div>
+    <br>
+    <br>
+    <input id='txtTrazi' type="text" />
+    <button onclick="btnZadA_trazi()">Zadatak A i B (trazi)</button>
+    <br>
+    <br>
+
+    <div style="border: 1px solid red;  padding: 5px;"">
+        Items per page <select id="items_per_page">
+        <option selected>5</option>
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+        </select>
+        <button onclick="btnZadG_paging(1)">Zadatak G (paged)</button><br>
+        <div id="pagesDiv">
+
+        </div>
+        Current page <span id="current_page"></span><br>
+        Total items <span id="total_items"></span>
+    </div>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Ime</th>
+            <th>Starost</th>
+            <th>Plata</th>
+            <th>Vrijeme dodavanja</th>
+            <th>Broj zadataka</th>
+            <th>Profilna slika</th>
+            <th>Akcija</th>
+        </tr>
+        <tbody id="tabela-zaposlenici">
+
+        </tbody>
+    </table>
+
+
+
+
+
+</body>
+<script src="https://wrd.app.fit.ba/2018-19/fit-messagebox.js"></script>
+<script>
+
+function pripremi_img(src) {
+        return "<img src='" + src + "' class='slika-profila' />";
+    }
+
+
+    function btnZadA_trazi() {
+    
+    }
+	
+    function btnZadC_getById(id) {
+        
+    }
+	
+    function btnZadD_dodaj() {
+       
+    }
+
+    function btnZadE_uredi() {       
+      
+    }
+
+    function btnZadF_obrisi(id) {        
+        
+    }
+
+    function btnZadG_paging(page_number) {
+       
+    }
+
+    function btnZadH_upload() {
+       
+    }
+</script>
+
+</html>

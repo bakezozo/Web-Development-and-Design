@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vremenska prognoza</title>
+    <style>
+        .grupa label {
+            display: block;
+        }
+
+        #strelica {
+            width: 50px;
+        }
+
+        .gradovi div {
+            background-color: gainsboro;
+            border: 1px solid;
+            padding: 5px;
+            width: 200px;
+            cursor: pointer;
+        }
+
+        .gradovi div:hover {
+            background-color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grupa">
+        <label>grad </label>
+        <input id="gradText" value="Dubrovnik">
+    </div>
+
+    <button onclick="btnClick()">Preuzmi</button>
+
+    <div id="poruka"></div>
+
+    <div class="grupa">
+        <label>temperatura = </label>
+        <input type="number" id="textTemp" disabled>
+    </div>
+
+    <div class="grupa">
+        <label>Vjetar m/s </label>
+        <input type="number" id="textWindSpeed" disabled>
+    </div>
+
+    <div class="grupa">
+        <label>Vjetar smjer Deg </label>
+        <input type="number" id="textWindDeg" disabled>
+    </div>
+
+    <img id="strelica" src="strelica.svg">
+
+
+    <div class="gradovi">
+        <div>Mostar</div>
+        <div>Sarajevo</div>
+        <div>Tuzla</div>
+        <div>Dubrovnik</div>
+        <div>Sakha</div>
+        <div>Mecca</div>
+        <div>Wiesbaden</div>
+    </div>
+
+    <div id="svg-div" style="color: blue">
+        <span>Ovo je tekst u div</span>
+
+        <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="14mm" height="31mm" viewBox="0 0 14 31"
+            version="1.1" id="svg1986" inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+            sodipodi:docname="Thermometer.svg">
+            <defs id="defs1980" />
+            <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0"
+                inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="2.8" inkscape:cx="-96.243744"
+                inkscape:cy="91.797364" inkscape:document-units="mm" inkscape:current-layer="layer1" showgrid="false"
+                width="36mm" inkscape:window-width="1920" inkscape:window-height="1139" inkscape:window-x="1024"
+                inkscape:window-y="26" inkscape:window-maximized="1" />
+            <metadata id="metadata1983">
+                <rdf:RDF>
+                    <cc:Work rdf:about="">
+                        <dc:format>image/svg+xml</dc:format>
+                        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                        <dc:title />
+                    </cc:Work>
+                </rdf:RDF>
+            </metadata>
+            <g inkscape:label="Ebene 1" inkscape:groupmode="layer" id="layer1" transform="translate(0,-266)">
+                <g id="g873">
+                    <path sodipodi:nodetypes="cccccccc" inkscape:connector-curvature="0" id="path1933-9-9"
+                        d="m 5.7239904,280.26803 v 8.47837 c -0.731926,0.44852 -1.178451,1.24493 -1.179294,2.10335 -1.2e-5,1.364 1.105731,2.46974 2.469728,2.46972 1.363998,2e-5 2.469741,-1.10572 2.469729,-2.46972 -0.0012,-0.85798 -0.447742,-1.65383 -1.179294,-2.10212 v -8.4796 z"
+                        style="opacity:1;fill:currentColor;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.35687089;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+                    <g id="g858">
+                        <path
+                            style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.35687089;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+                            d="m 7.0144244,270.25344 c -0.712686,0 -1.290434,0.57774 -1.290434,1.29043 v 17.20253 a 2.4697054,2.4697054 0 0 0 -1.179294,2.10335 2.4697054,2.4697054 0 0 0 2.469728,2.46972 2.4697054,2.4697054 0 0 0 2.469729,-2.46972 2.4697054,2.4697054 0 0 0 -1.179294,-2.10212 v -17.20376 c 0,-0.71269 -0.577748,-1.29043 -1.290435,-1.29043 z"
+                            id="path1933-9" inkscape:connector-curvature="0" />
+                        <path
+                            style="fill:none;stroke:#000000;stroke-width:0.37568492px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                            d="M 9.1644617,275.59349 H 10.470804" id="path814" inkscape:connector-curvature="0"
+                            sodipodi:nodetypes="cc" />
+                        <path
+                            style="fill:none;stroke:#000000;stroke-width:0.37568492px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                            d="M 9.1644617,282.15565 H 10.470804" id="path814-0" inkscape:connector-curvature="0"
+                            sodipodi:nodetypes="cc" />
+                        <path
+                            style="fill:none;stroke:#000000;stroke-width:0.37568492px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                            d="M 9.1644617,277.23403 H 10.470804" id="path814-2" inkscape:connector-curvature="0"
+                            sodipodi:nodetypes="cc" />
+                        <path
+                            style="fill:none;stroke:#000000;stroke-width:0.37568492px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                            d="M 9.1644617,273.95294 H 10.470803" id="path814-9" inkscape:connector-curvature="0"
+                            sodipodi:nodetypes="cc" />
+                        <path
+                            style="fill:none;stroke:#000000;stroke-width:0.37568492px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                            d="M 9.1644617,280.51512 H 10.470804" id="path814-05" inkscape:connector-curvature="0"
+                            sodipodi:nodetypes="cc" />
+                        <path
+                            style="fill:none;stroke:#000000;stroke-width:0.37568492px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                            d="M 9.1644617,283.79621 H 10.470803" id="path814-6" inkscape:connector-curvature="0"
+                            sodipodi:nodetypes="cc" />
+                        <path
+                            style="fill:none;stroke:#000000;stroke-width:0.37568492px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                            d="M 9.1644617,285.43674 H 11.441464" id="path814-1-4" inkscape:connector-curvature="0"
+                            sodipodi:nodetypes="cc" />
+                        <path
+                            style="fill:none;stroke:#000000;stroke-width:0.37568492px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                            d="M 9.1644617,278.87458 H 11.441464" id="path814-1-9" inkscape:connector-curvature="0"
+                            sodipodi:nodetypes="cc" />
+                        <path
+                            style="fill:none;stroke:#000000;stroke-width:0.37568492px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                            d="M 9.1644617,272.3124 H 11.441463" id="path814-1-1" inkscape:connector-curvature="0"
+                            sodipodi:nodetypes="cc" />
+                        <path
+                            style="fill:none;stroke:#ffffff;stroke-width:0.27738255;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                            d="m 5.358402,290.85284 c 0.148998,0.7487 0.585742,1.32226 1.381078,1.53639 v 0 0"
+                            id="path1476" inkscape:connector-curvature="0" sodipodi:nodetypes="cccc" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+    </div>
+</body>
+
+<script>
+    function btnClick() {
+        let gradText = document.getElementById("gradText").value;
+
+        let url = `http://api.openweathermap.org/data/2.5/weather?q=${gradText}&appid=917b026a997320574cd4315b9bf4c73a   `;
+
+        fetch(url)
+            .then(r => {
+                if (r.status !== 200) {
+                    alert("neka greska: " + r.status);
+                    return;
+                }
+
+                r.json().then(t => {
+                    document.getElementById("poruka").innerHTML = ``;
+                    textTemp.value = (t.main.temp - 273).toFixed(1);
+                    textWindSpeed.value = (t.wind.speed).toFixed(2);
+                    textWindDeg.value = t.wind.deg;
+                    strelica.style.rotate = (t.wind.deg - 90) + "deg";
+
+                    let x = t.main.temp - 273;
+                    document.getElementById("svg-div").style.color = getThermometerColor(x);
+
+                    //document.getElementById("path1933-9-9").style.fill = getThermometerColor(x)
+                    // document.getElementById("path814-0").style.fill = getThermometerColor(x)
+                    // document.getElementById("path1933-9-9").remove()
+
+                    nekiId.style.backgroundColor = getThermometerColor(x);
+                })
+            })
+            .catch(e => {
+                alert("greska u komunikaciji sa server: " + e);
+            })
+    }
+
+    document.querySelectorAll(".gradovi div").forEach(f => {
+        f.onclick = () => {
+            document.getElementById("gradText").value = f.innerHTML;
+            btnClick();
+        }
+    })
+
+
+    function getThermometerColor(temperature) {
+        /*            
+            Me: 
+            Lets say that -10 degree is the minimum temperature and the color of thermometer should be blue which indicates cold.
+            lets say that 50 degree is the maximum temperature and the color of thermometer should be red which indicates hot.
+            give me a formula which calulate the color of therometer by degree in celsius
+
+            Chatgpt:
+            To calculate the color of the thermometer based on the temperature in Celsius, you can use the following formula:
+
+            Color = Interpolate(Color1, Color2, (Temperature - MinTemperature) / (MaxTemperature - MinTemperature))
+
+            In this formula:
+
+            Color1 represents the starting color (blue in this case).
+            Color2 represents the ending color (red in this case).
+            Temperature is the actual temperature value in Celsius.
+            MinTemperature is the minimum temperature (in this case, -10 degrees).
+            MaxTemperature is the maximum temperature (in this case, 50 degrees).
+            The Interpolate function calculates the intermediate color based on the temperature value and the range between the minimum and maximum temperatures. It ensures a smooth transition between the two colors.
+
+            Please note that you need to specify the colors in a format compatible with the programming language or tool you are using. Typically, colors are represented as RGB values or hex codes.
+
+            Me: 
+            Give me code in java script
+
+            ChatGpt:
+            Certainly! Here's an example of JavaScript code that implements the formula to calculate the color of the thermometer based on the temperature in Celsius:
+
+            In this code, the getThermometerColor() function takes the temperature in Celsius as input and returns the color of the thermometer in CSS color format. It uses the provided minimum and maximum temperatures (-10 and 50 degrees) and the blue-to-red color gradient to interpolate the color based on the temperature.
+
+            The resulting color is then converted to the CSS color format (rgb(R, G, B)) for ease of use.
+
+            You can test this code by assigning different values to the temperature variable and observe the corresponding thermometer color in the console output.
+        */
+        const minTemperature = -10;
+        const maxTemperature = 50;
+        const color1 = [0, 0, 255]; // Blue color
+        const color2 = [255, 0, 0]; // Red color
+
+        // Interpolate the color based on the temperature
+        const ratio = (temperature - minTemperature) / (maxTemperature - minTemperature);
+        const color = color1.map((component, index) => Math.round(component + ratio * (color2[index] - component)));
+
+        // Convert the color values to CSS color format
+        const cssColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+
+        return cssColor;
+    }
+
+
+</script>
+
+</html>
