@@ -1,0 +1,98 @@
+﻿body{
+    font-family: sans-serif;
+    background-color: rgb(245,245,245);
+}
+*{
+    box-sizing: border-box;
+}
+header{
+    background-image: url('images/background.jpg');
+    height:800px;
+    background-size: cover;
+}
+nav{
+
+}
+.header-title {
+ text-align: center;
+ color:white;
+}
+.header-title h1{
+    display:inline;
+}
+.ponude{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.destinacija{
+    margin:10px;
+    width: 30%;
+    background-color:white;
+    position: relative;
+    box-shadow: 5px 5px 5px 0px rgba(115,112,112,0.75);
+}
+.destinacija-bg{
+    height:200px;
+    background-size:cover;
+}
+.destinacija-footer{
+    text-align: center;
+}
+.dugme{
+    background-color: rgb(68,138,139);
+    color: white;
+    display: inline-block;
+    padding: 7px;
+    margin: 5px;
+}
+.destinacija-sadrzaj-soba select{
+    padding:4px;
+    width: 100%;
+}
+.destinacija-sadrzaj{
+    padding:5px;
+}
+.destinacija-sadrzaj-prvired{
+    display: flex;
+}
+.destinacija-istaknuto{
+    position:absolute;
+    right: 0;
+    top:30px;
+    background-color: rgba(255,0,0,0.5);
+    color: white;
+    padding:4px;
+    rotate:45deg;
+}
+.boldiraj{
+font-weight: 800;
+}
+.forma{
+    background-color: beige;
+    width: 500px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.forma-row{
+    display:flex;
+    border:1px solid blue;
+}
+.forma-kontrola{
+    padding:10px;
+    border: 1px solid red;
+    width: 50%;
+}
+.forma-kontrola label{
+    display:block;
+    width: 100%;
+}
+.forma-kontrola input{
+    display:block;
+    width: 100%;
+    padding:4px;
+    border: 1px solid green;
+}

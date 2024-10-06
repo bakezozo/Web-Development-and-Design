@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    
+        <div>
+            <label>Vrijednost A</label>
+            <input type="text" id="textA" />
+        </div>
+        <div>
+            <label>Vrijednost B</label>
+            <input type="text" id="textB" />
+        </div>
+        <hr>
+        <button onclick="saberi()">Saberi</button>
+        <div>
+            <label>Vrijednost C </label>
+            <input type="text" id="textC" />
+        </div>
+    
+    <script>
+
+        let txtA = document.getElementById("textA");
+        let txtB = document.getElementById("textB");
+        let txtC = document.getElementById("textC");
+        function saberi(){
+
+            let x = Number(txtA.value)+Number(txtB.value);
+            console.log("x = " + x);
+
+            txtC.value=x;
+        }
+
+    </script>
+</body>
+
+</html>

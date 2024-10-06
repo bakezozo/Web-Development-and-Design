@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #kontejner
+        {
+            position: relative;
+            width: 600px;
+            height: 700px;
+            background-color: aqua;
+        }
+
+        #polje{
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            right: 20px;
+            bottom: 200px;
+            background-color: blue;
+        }
+
+        .pozadina-kontrola{
+            position: absolute;
+            background-color: red;
+            height: 60px;
+            width: 60px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+        }
+        #dolje{
+            bottom: 10px;
+            left: calc(50% - 25px)
+        }
+        #lijevo{
+            bottom: 10px;
+            left: calc(50% - 95px)
+        }
+        #desno{
+            bottom: 10px;
+            left: calc(50% + 45px)
+        }
+        #gore{
+            bottom: 80px;
+            left: calc(50% - 25px)
+        }
+
+        #lopta{
+            background-color: yellow;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            left: calc(50% - 20px);
+            position: absolute;
+            transition: 1s;
+        }
+        #kocka{
+            background-color: rgb(77, 255, 0);
+            width: 40px;
+            height: 40px;
+            position: absolute;
+        }
+        #gol1{
+            background-color: rgb(159, 86, 232);
+            width: 30px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 20px;
+        }
+
+        #gol2{
+            background-color: rgb(159, 86, 232);
+            width: 30px;
+            height: 100px;
+            position: absolute;
+            right: 0;
+            bottom: 20px;
+        }
+
+        #linija1{
+            position: absolute;
+            left: calc(50%);
+            border:2.5px solid white;
+            top: 0;
+            height: calc(50% - 53px);
+        }
+        #linija2{
+            position: absolute;
+            left: calc(50%);
+            border:2.5px solid white;
+            bottom: 0;
+            height: calc(50% - 53px);
+        }
+
+        #krug{
+            position: absolute;
+            left: calc(50% - 54px);
+            border:5px solid white;
+            top: calc(50% - 54px);
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="kontejner">
+        <div  id="gore" class="pozadina-kontrola" onclick="lopta_idi_gore()" >
+            UP
+        </div>
+        <div id="dolje"  class="pozadina-kontrola"  onclick="lopta_idi_dole()"   >
+            DOWN
+        </div>
+        <div  id="lijevo"  class="pozadina-kontrola"  onclick="lopta_idi_lijevo()"   >
+            LEFT
+        </div>
+        <div  id="desno"  class="pozadina-kontrola"   onclick="lopta_idi_desno()"  >
+            RIGHT
+        </div>
+       
+        <div id="polje" >
+            <div id="krug"></div>
+            <div id="lopta">
+            </div>
+            <div id="kocka">
+            </div>
+            <div id="gol1"></div>
+            <div id="gol2"></div>
+            <div id="linija1"></div>
+            <div id="linija2"></div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var lopta = document.getElementById("lopta");
+    var kocka = document.getElementById("kocka");
+  
+    var topPozicijaLopte = 100;
+    var leftPozicijaLopte = 100;
+
+    var topPozicijaKocke = 100;
+    var leftPozicijaKocke = 100;
+
+    function postaviLoptu()
+    {
+        lopta.style.top = topPozicijaLopte+"px";
+        lopta.style.left = leftPozicijaLopte+"px";
+    }
+
+    function postaviKocku()
+    {
+        kocka.style.top = topPozicijaKocke+"px";
+        kocka.style.left = leftPozicijaKocke+"px";
+    }
+
+
+    function lopta_idi_gore()
+    {
+        topPozicijaLopte -= 10;
+        postaviLoptu(); 
+    }
+    function lopta_idi_dole()
+    {
+        topPozicijaLopte += 10;
+        postaviLoptu(); 
+    }
+    function lopta_idi_lijevo()
+    {
+        leftPozicijaLopte -= 10;
+        postaviLoptu(); 
+    }
+    function lopta_idi_desno()
+    {
+        leftPozicijaLopte += 10;
+        postaviLoptu()
+    }
+
+    function kocka_idi_gore()
+    {
+        topPozicijaKocke -= 10;
+        postaviKocku()
+    }
+    function kocka_idi_dole()
+    {
+        topPozicijaKocke += 10;
+        postaviKocku() 
+    }
+    function kocka_idi_lijevo()
+    {
+        leftPozicijaKocke -= 10;
+        postaviKocku()
+    }
+    function kocka_idi_desno()
+    {
+        leftPozicijaKocke += 10;
+        postaviKocku(); 
+    }
+
+    function RandomKockaKretanje()
+    {
+        var randomCijeliBroj = Math.floor(Math.random() * 4);
+
+        if (randomCijeliBroj == 0) kocka_idi_gore();
+        if (randomCijeliBroj == 1) kocka_idi_dole();
+        if (randomCijeliBroj == 2) kocka_idi_lijevo();
+        if (randomCijeliBroj == 3) kocka_idi_desno();
+    }
+
+    postaviLoptu();
+    postaviKocku();
+
+    setInterval(RandomKockaKretanje, 500)
+
+</script>
+</html>

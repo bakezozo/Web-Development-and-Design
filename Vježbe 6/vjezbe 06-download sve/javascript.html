@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        .box-A {          
+            background: gray;
+            height: 100px;
+            width: 100px;         
+        }
+        .box-B {
+            background: rgba(61, 247, 231, 0.281);
+            height: 100px;
+            width: 100px;          
+        }           
+        </style>
+</head>
+<body>
+    <div id="B-id" onclick="f1()" class="box-B">Ovo je box B.<br> </div>    
+    <div id="A-id" class="box-A">Ovo je box A.<br> </div>
+
+
+
+</body>
+
+<script>
+
+
+
+
+var aBox = document.getElementById("A-id");
+var bBox = document.getElementById("B-id");
+
+//alert("ovo je alert");
+
+var sirina = 100;
+
+function f1()
+{
+    sirina += 10;
+
+    aBox.innerHTML += "ovo je dodatno prko JS<br>";
+    aBox.style.width = sirina + "px";
+}
+
+
+</script>
+</html>

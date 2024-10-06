@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        .box-A {
+            background: gray;
+            height: 100px;
+            width: 100px;
+        }
+
+        .box-B {
+            background: rgba(61, 247, 231, 0.281);
+            height: 100px;
+            width: 100px;
+        }
+
+        #B-id {}
+    </style>
+ 
+</head>
+
+<body>
+    <div id="B-id" class="box-B">Ovo je box B. </div>
+    <div id="A-id" class="box-A">Ovo je box A.<br> </div>
+
+    <button onclick="f1()">F1</button><br>
+    <button onclick="f2()">F2</button><br>
+</body>
+
+<script>
+    var a = document.getElementById("A-id");
+    var b = document.getElementById("B-id");
+
+    function f1()
+    {
+        a.innerHTML += "<br/> Ovo je dodato pomocu java script. " + new Date().toLocaleTimeString();
+        a.style.background = "yellow";
+        a.style.width = "110px";
+
+    }
+
+    
+    function f2()
+    {
+        a.style.backgroundColor =  "red";
+    }
+
+ 
+</script>
+
+</html>

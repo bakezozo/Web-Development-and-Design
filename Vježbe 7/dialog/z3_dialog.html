@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lafo Dijalog</title>
+    <style>
+        body{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #my-dialog-wrapper{
+            display:none;
+            background-color: rgba(0,0,0,0.300);
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+        .my-dialog{
+            position:absolute;
+            overflow: hidden;
+            width: 300px;
+            height: 400px;
+            top: 20%;
+            left: calc(50% - 150px);
+            box-shadow: 1px 0px 12px 2px rgba(0,0,0,0.75);
+            background-color: white;
+        }
+        .my-dialog-header {
+            background-color: rgb(139, 195, 74);
+            height: 200px;
+            display: flex;
+        }
+        .header-icon{
+            color:white;
+            margin:auto;
+        }
+        .header-icon img{
+            display:block;
+            width: 80px;
+        }
+        .header-icon span{
+            display: block;
+            margin-left:auto;
+            margin-right:auto;
+            text-align: center;
+        }
+        #my-dialog-body{
+            height:50px;
+            text-align: center;
+            padding: 30px;
+        }
+        .my-dialog-footer{
+            padding: 20px;
+        }
+        .my-dialog-footer .dugme{
+            background-color: rgb(139, 195, 74);
+            box-shadow: 1px 20px 50px -10px rgba(139,195,74,0.55);
+            border-radius: 15px;
+            padding: 15px 40px;
+            width: 50%;
+            text-align: center;
+            color:white;
+            margin-left:auto;
+            margin-right:auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="dialogSuccess('Cestitamo :] Vas korisnicki nalog je uspjesno aktiviran.')">Dugme 1</button>
+    <button onclick="dialogSuccess('Cestitamo :] Dobili ste drugu poruku.')">Dugme 2</button>
+
+    <div id="my-dialog-wrapper">
+        <div class="my-dialog">
+            <div class="my-dialog-header">
+                <div class="header-icon">
+                    <img src="success.png">
+                <span>Success</span>
+                </div>
+                
+            </div>
+            <div id="my-dialog-body">
+            </div>
+            <div class="my-dialog-footer">
+                <div class="dugme" onclick="dialogClose()">Continue</div>
+            </div>
+        </div>
+    </div>
+    
+
+
+</body>
+<script>
+    let myDialogWrapper = document.getElementById("my-dialog-wrapper");
+    let myDialogBody = document.getElementById("my-dialog-body");
+    let dialogSuccess = (x) =>{
+        myDialogBody.innerHTML = x;
+        myDialogWrapper.style.display="block";
+    }
+    let dialogClose = () =>{
+        myDialogWrapper.style.display="none";
+    }
+</script>
+
+</html>

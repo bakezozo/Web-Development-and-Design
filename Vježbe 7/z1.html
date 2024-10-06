@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        .box-A {          
+            background: gray;
+            width: 100px;   
+        }
+        .box-B {
+            background: rgba(61, 247, 231, 0.281);
+            height: 100px;
+            width: 100px;          
+        }       
+        </style>
+</head>
+<body>
+
+    <div id="B-id" class="box-B">Ovo je box B. </div>    
+    <div id="A-id" class="box-A">Ovo je box A. </div>
+    <button id="dugme-id">Dugme</button> 
+
+</body>
+
+<script>
+    var a = document.getElementById("A-id");
+
+    let f1 = function (){
+    a.innerHTML += "<br/> Ovo je dodato pomocu Java Script-a, a ovo je vrijeme kada: " + new Date().toLocaleTimeString();
+    a.style.background = "yellow";
+    a.style.width = "110px";
+    }
+
+    var dugme = document.getElementById("dugme-id");
+    dugme.onclick=f1;
+    
+</script>
+</html>
+
