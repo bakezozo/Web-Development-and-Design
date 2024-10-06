@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Yoko's Kitchen</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			background-image: url("images/dark-wood.jpg");
+		}
+
+		header {
+			background-image: url("images/header.jpg");
+			height: 160px;
+		}
+
+		.wrapper {
+			background-color: white;
+			width: 940px;
+		}
+
+		.courses {
+			background-color: rgb(130, 218, 218);
+			float: left;
+			width: 70%;
+		}
+
+		aside {
+			background-color: yellow;
+			float: left;
+			width: 30%;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+
+		footer {
+			background-color: aquamarine;
+			clear: left;
+		}
+
+		figure {
+			background-color: white;
+			padding: 5px;
+			border: 1px solid gray;
+			float: left;
+		}
+
+		article {
+			clear: left;
+		}
+
+		ul {
+			background-color: gray;
+			padding: 5px;
+
+		}
+
+		li {
+			display: inline;
+			margin-left: 20px;
+		}
+
+		li a {
+			color: white;
+			text-decoration: none;
+		}
+
+		nav {
+			padding-top: 115px;
+		}
+
+		section a {
+			display: block;
+			padding-top: 8px;
+			padding-bottom: 8px;
+			text-decoration: none;
+			border-top: 1px solid gray;
+			border-bottom: 1px solid gray;
+		}
+
+		section a:hover {
+			background-color: azure;
+		}
+
+		#nav-button {
+			display: none;
+		}
+
+		@media only screen and (max-width: 600px) {
+			* {
+				box-sizing: border-box;
+			}
+
+			.wrapper {
+				width: 100%;
+			}
+
+			.courses {
+				width: 100%;
+			}
+
+			aside {
+				width: 100%;
+			}
+
+			figure {
+				margin: 0;
+				width: 100%;
+			}
+
+			figure img {
+				width: 100%;
+			}
+
+			body {
+				margin: 0;
+			}
+
+			li {
+				display: block;
+				text-align: center;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				border-top: 1px solid white;
+				margin: 0;
+			}
+
+			ul {
+				margin: 0;
+			}
+
+			nav {
+				padding-top: 145px;
+				overflow: hidden;
+				transition: 2s;
+			}
+
+			header {
+				height: auto;
+			}
+
+			#logo {
+				cursor: pointer;
+				width: 40px;
+				height: 40px;
+				background-color: gray;
+				padding-top: 3px;
+				position: absolute;
+				top: 105px;
+				right: 5px;
+			}
+
+			.linija {
+				background-color: white;
+				height: 4px;
+				margin: 6px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header>
+
+			<nav  id="nav-menij">
+				<ul>
+					<li><a href="#" class="current">home</a></li>
+					<li><a href="#">classes</a></li>
+					<li><a href="#" onclick="catering()">catering</a></li>
+					<li><a href="#">about</a></li>
+					<li><a href="#">contact</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section class="courses">
+			<article>
+				<figure>
+					<img src="images/bok-choi.jpg" alt="Bok Choi" />
+					<figcaption>Bok Choi</figcaption>
+				</figure>
+				<hgroup>
+					<h2>Japanese Vegetarian</h2>
+					<h3>Five week course in London</h3>
+				</hgroup>
+				<p>A five week introduction to traditional Japanese vegetarian meals, teaching you a selection of rice
+					and noodle dishes.</p>
+			</article>
+			<article>
+				<figure>
+					<img src="images/teriyaki.jpg" alt="Teriyaki sauce" />
+					<figcaption>Teriyaki Sauce</figcaption>
+				</figure>
+				<hgroup>
+					<h2>Sauces Masterclass</h2>
+					<h3>One day workshop</h3>
+				</hgroup>
+				<p>An intensive one-day course looking at how to create the most delicious sauces for use in a range of
+					Japanese cookery.</p>
+			</article>
+		</section>
+		<aside>
+			<section class="images-popular-recipes">
+				<h2>Popular Recipes</h2>
+				<a href="">Yakitori (grilled chicken)</a>
+				<a href="">Tsukune (minced chicken patties)</a>
+				<a href="">Okonomiyaki (savory pancakes)</a>
+				<a href="">Mizutaki (chicken stew)</a>
+			</section>
+			<section class="contact-details">
+				<h2>Contact</h2>
+				<p>Yoko's Kitchen<br />
+					27 Redchurch Street<br />
+					Shoreditch<br />
+					London E2 7DP</p>
+			</section>
+		</aside>
+		<footer>
+			<div id="logo" onclick="dugmeMenij()">
+				<div class="linija"></div>
+				<div class="linija"></div>
+				<div class="linija"></div>
+			</div>
+			&copy; 2011 Yoko's Kitchen
+		</footer>
+	</div><!-- .wrapper -->
+
+</body>
+<script>
+	
+	let navMenij = document.getElementById("nav-menij");
+	let otvoren = true;
+	function dugmeMenij(){
+		if(otvoren){
+			navMenij.style.height="0";
+		}
+		else{
+			let visina = navMenij.scrollHeight;
+			navMenij.style.height= visina + "px";
+			/*
+			ili da smo napisali : navMenij.style.height = navMenij.scrollHeight + "px";
+			*/
+		}
+		otvoren=!otvoren;
+	}
+	function catering(){
+		dialogSuccess('Da li ste sigurni.....?')
+	}
+
+</script>
+<script src="https://wrd.app.fit.ba/2022-23/dialog/v2/fit-dialog.js"></script>
+
+</html>

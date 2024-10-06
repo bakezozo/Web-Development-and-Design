@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primjer Animacije</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation-name:animacija1;
+            animation-duration: 4s;
+            position: absolute;
+        }
+        @keyframes animacija1{
+            0%{
+                background-color: red;
+                top:0;
+                left:0;
+            }
+            100%{
+                background-color: green;
+                rotate:180deg;
+                left:100%;
+                top:100%;
+                opacity: 20%;
+            }
+        }
+    </style>
+</head>
+<h1>CSS Animacija</h1>
+<div></div>
+<body>
+    
+</body>
+</html>

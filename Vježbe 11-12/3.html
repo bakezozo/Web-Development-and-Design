@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kvadratna jednačina</title>
+    
+</head>
+<body>
+    <div class="grupa">
+        <label>a = </label>
+        <input type="number" min="-100" max="1000" id="textA" value="-50" >
+    </div>
+    <div class="grupa">
+        <label>b = </label>
+        <input type="number" min="-100" max="1000" id="textB"  value="10">
+    </div>
+    <div class="grupa">
+        <label>c = </label>
+        <input type="number" min="-100" max="1000" id="textC" value="200" >
+    </div>
+   
+    <button onclick="btnClick()">Preuzmi</button>
+
+    <div id="poruka"></div>
+
+    <div class="grupa">
+        <label>x1 = </label>
+        <input type="number"  id="textX1" disabled>
+    </div>
+
+    <div class="grupa">
+        <label>x2 = </label>
+        <input type="number"  id="textX2" disabled >
+    </div>
+</body>
+
+<script>
+    function btnClick()
+    {
+        let aBroj = document.getElementById("textA").value;
+        let bBroj = document.getElementById("textB").value;
+        let cBroj = document.getElementById("textC").value;
+
+        let url = `https://nastava1.app.fit.ba/racunaj/kv_jednacina?a=${aBroj}&b=${bBroj}&c=${cBroj}`;
+
+        fetch(url)
+        .then(r=>{
+            if (r.status !== 200)
+            {
+                alert("neka greska: " + r.status);
+                return;
+            }
+
+            r.json().then(t=>{
+                //document.getElementById("poruka").innerHTML = t
+                document.getElementById("textX1").value = t.x1.toFixed(3);
+                document.getElementById("textX2").value = t.x2.toFixed(3);
+            })
+        })
+        .catch(e=>{
+            alert("greska u komunikaciji sa server: " + e);
+        })
+    }
+</script>
+</html>

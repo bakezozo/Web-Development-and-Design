@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    input {
+        display: block;
+        width: 100%;
+    }
+
+    #rezultatDiv {
+        border: solid;
+        width: 100%;
+    }
+</style>
+
+<body>
+    <input id="txt" value="https://pages.github.com/">
+    <button onclick="btnClick()">Preuzmi</button>  <button onclick="popraviSlike()">Popravi slike</button>
+    <div id="rezultatDiv"></div>
+
+   
+</body>
+<script>
+    function btnClick() {
+
+        let urladresa = document.getElementById('txt').value;
+        fetch(urladresa)
+            .then(
+                r => {
+                    if (r.status !== 200) {
+                        alert("Server javlja grešku: " + r.status);
+                        return;
+                    }
+
+                    r.text().then(t => {
+                        document.getElementById("rezultatDiv").innerHTML = t;
+                    });
+                }
+            )
+            .catch(
+                err => {
+                    alert("Greška u komunikaciji sa serverom: " + err);
+                }
+            );
+
+    }
+
+    function popraviSlike()
+    {
+        //ovo ne morate poznavati
+        let urladresaPage =  new URL(document.getElementById('txt').value);
+
+        
+        var slike = document.querySelectorAll("img");
+        slike.forEach(s => {
+            let urlslike = new URL(s.src);
+            urlslike.hostname = urladresaPage.hostname;
+            urlslike.protocol = urladresaPage.protocol;
+            urlslike.port = urladresaPage.port;
+            s.src = urlslike.toString();
+        });
+    }
+</script>
+
+</html>

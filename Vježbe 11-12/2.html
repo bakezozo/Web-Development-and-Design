@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suma 3 broja</title>
+    
+</head>
+<body>
+    <div class="grupa">
+        <label>a = </label>
+        <input type="number" min="0" max="1000" id="textA" value="5" >
+    </div>
+    <div class="grupa">
+        <label>b = </label>
+        <input type="number" min="0" max="1000" id="textB"  value="10">
+    </div>
+    <div class="grupa">
+        <label>c = </label>
+        <input type="number" min="0" max="1000" id="textC" value="200" >
+    </div>
+   
+    <button onclick="btnClick()">Preuzmi</button>
+
+    <div id="poruka"></div>
+</body>
+
+<script>
+    function btnClick()
+    {
+        let aBroj = document.getElementById("textA").value;
+        let bBroj = document.getElementById("textB").value;
+        let cBroj = document.getElementById("textC").value;
+
+        let url = `https://nastava1.app.fit.ba/racunaj/suma?a=${aBroj}&b=${bBroj}&c=${cBroj}`;
+
+        fetch(url)
+        .then(r=>{
+            if (r.status !== 200)
+            {
+                alert("neka greska: " + r.status);
+                return;
+            }
+
+            r.text().then(t=>{
+                console.log(t.substring(2, 20))
+                document.getElementById("poruka").innerHTML = t
+            })
+        })
+        .catch(e=>{
+            alert("greska u komunikaciji sa server: " + e);
+        })
+    }
+</script>
+</html>

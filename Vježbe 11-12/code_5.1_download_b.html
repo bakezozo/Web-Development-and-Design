@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <input id="txt">
+   <button onclick="btnClick()">Preuzmi</button>
+   <div id="rezultatDiv" style="border:solid; width: 600px; height: 400px;overflow: scroll;"></div>
+</body>
+<script>
+    function btnClick()
+    {
+        var mojUrl = document.getElementById("txt").value;
+        
+        var zahtjev = new XMLHttpRequest();
+       
+        zahtjev.onload  = function() { 
+                if (zahtjev.status === 200) {  
+                    document.getElementById("rezultatDiv").innerHTML = zahtjev.responseText;
+                }
+                else {  
+                    alert("Server javlja grešku: " + zahtjev.statusText);  
+                }  
+        }
+
+        zahtjev.onerror = function() {
+            alert("Greška u komunikaciji sa serverom.");  
+        };
+
+        zahtjev.open("GET", mojUrl, true);
+        zahtjev.send(null);
+    }
+</script>
+</html>

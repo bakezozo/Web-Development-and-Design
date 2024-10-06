@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karausel</title>
+  <link rel="stylesheet" href="fit-image-slider.css">
+</head>
+
+<body>
+
+  <h1>Slideshow / Carousel</h1>
+  <p>A slideshow is used to cycle through elements:</p>
+  <!-- Slideshow container -->
+  <div id="s" class="slideshow-container">
+
+    <div class="slideshow-slides">
+      <!-- Full-width images with number and caption text -->
+      <div class="mySlides">
+        <div class="numbertext">1 / 4</div>
+        <img src="images/img1.jpg">
+        <div class="text">Caption One</div>
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">2 / 4</div>
+        <img src="images/img2.jpg">
+        <div class="text">Caption Two</div>
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">3 / 4</div>
+        <img src="images/img3.jpg">
+        <div class="text">Caption Three</div>
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">4 / 4</div>
+        <img src="images/img4.jpg"">
+        <div class=" text">Caption Four
+      </div>
+    </div>
+  </div>
+  <!-- Next and previous buttons -->
+  <a class="strelica prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="strelica next" onclick="plusSlides(1)">&#10095;</a>
+
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+
+  </div>
+  <br>
+
+  <!-- The dots/circles -->
+
+  <script src="fit-image-slider.js"></script>
+  <script>
+    currentSlide(0);
+  </script>
+</body>
+
+</html>

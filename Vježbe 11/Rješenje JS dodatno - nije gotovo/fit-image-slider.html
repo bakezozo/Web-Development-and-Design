@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karausel</title>
+  <link rel="stylesheet" href="fit-image-slider.css">
+</head>
+
+<body>
+
+  <h1>Slideshow / Carousel</h1>
+  <p>A slideshow is used to cycle through elements:</p>
+  <!-- Slideshow container -->
+  <div id="s" class="slideshow-container">
+
+    
+  </div>
+  <!-- Next and previous buttons -->
+  <a class="strelica prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="strelica next" onclick="plusSlides(1)">&#10095;</a>
+
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+
+  </div>
+  <br>
+
+  <!-- The dots/circles -->
+
+  <script src="fit-image-slider.js"></script>
+  <script>
+    inicijalno(["img1.png", "img2.png", "img3.png", "img4.png"])
+  </script>
+</body>
+
+</html>

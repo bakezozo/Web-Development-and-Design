@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        A =
+        <input type="text" id="textA" />
+    </div>
+    <div>
+        B =
+        <input type="text" id="textB" />
+    </div>
+    <hr>
+    <button onclick="saberi()">Saberi</button>
+    <button onclick="reset()">Reset</button>
+    <div>
+        C = <input type="text" id="textC" />
+    </div>
+
+    <div id="temp-div">
+
+    </div>
+
+    <script src="dialog/fit-dialog.js"></script>
+
+    <script>
+
+        console.log("otvara se stranica");
+
+        function reset() {
+           dialogSuccess("Da li želite resetovati kalkulator?",  ()=>{
+                document.getElementById("textA").value = "";
+                document.getElementById("textB").value = "";
+                document.getElementById("textC").value = "";
+            })
+
+        }
+
+        function saberi() {
+            var txtA = document.getElementById("textA");    //txtA je kompletan objekat.
+            var strA = txtA.value;                          //strA je string koji je upisan u textbox. Preuzet preko "value".
+            var intA = Number(strA);                        //intA je broj.
+            // itd...
+
+            var txtB = document.getElementById("textB");    //txtA je kompletan objekat.
+            var strB = txtB.value;                          //strA je string koji je upisan u textbox. Preuzet preko "value".
+            var intB = Number(strB);                        //intA je broj.
+
+            var intC = intA + intB;
+
+            var txtC = document.getElementById("textC");
+            txtC.value = intC;
+        }
+    </script>
+</body>
+
+</html>
